@@ -144,6 +144,10 @@ module.exports = function(config) {
 
     if (config && (typeof config[prefix] === 'number')) {
       var paramIndex = config[prefix];
+      if (paramIndex === -1) {
+        // This is skipped
+        return null;
+      }
       var url = options.params[paramIndex];
       if (url.substr(0, 4) !== 'http') {
         // This is local and does not need authentication.
